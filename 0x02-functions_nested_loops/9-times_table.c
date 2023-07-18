@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * times_table - entry point
+ * print_times_table - entry point
 */
-void times_table(void)
+void print_times_table(void)
 {
 	int i, j, k;
 

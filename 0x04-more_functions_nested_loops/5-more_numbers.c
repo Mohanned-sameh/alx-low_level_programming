@@ -10,8 +10,8 @@ void more_numbers(void)
 	for (c = 0; c <= 10; c++)
 	{
 		for (i = '0'; i <= 14; i++)
-			putchar(i);
-		putchar('\n');
+			_putchar(i);
+			_putchar('\n');
 	}
-	putchar('\n');
+	_putchar('\n');
 }

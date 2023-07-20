@@ -1,8 +1,10 @@
 #include "main.h"
+
 /**
  * print_diagonal - prints \
- * @n: the number of times to print
- */
+ *
+ * @n: variable that number of times to print
+*/
 void print_diagonal(int n)
 {
 	int i, j;
@@ -18,4 +20,5 @@ void print_diagonal(int n)
 		_putchar('\\');
 		_putchar('\n');
 	}
+
 }

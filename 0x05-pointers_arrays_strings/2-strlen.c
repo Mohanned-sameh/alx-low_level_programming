@@ -1,8 +1,8 @@
-#include "main.h"
 /**
- * _strlen - Returns the length of a string
- * @*s: the characters to be checked
- * Return: The length of the string
+ * _strlen -  returns the length of a string.
+ * @s: string
+ *
+ * Return: string len
  */
 int _strlen(char *s)
 {

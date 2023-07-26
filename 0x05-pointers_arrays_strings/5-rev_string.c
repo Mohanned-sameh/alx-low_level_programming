@@ -1,10 +1,13 @@
 #include "main.h"
+
 /**
- * rev_string - print a string in reverse
- * followed by a new line to stdout
+ * rev_string -   prints a string in reverse,
+ * followed by a new line, to stdout.
  * @s: string
- * Return: void
+ *
+ * Return: nothing
  */
+
 void rev_string(char *s)
 {
 	int len = 0, i = 0;

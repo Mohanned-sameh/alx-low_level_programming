@@ -1,8 +1,10 @@
 #include "main.h"
+
 /**
- * reset_to_98 - entry point to reset n to the value 98
- * @n: the int to be changed
- * Return: void
+ * reset_to_98 - change value using pointer
+ * @n: integer value
+ *
+ * Return: none
  */
 void reset_to_98(int *n)
 {

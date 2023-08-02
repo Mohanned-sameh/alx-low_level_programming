@@ -1,36 +1,46 @@
 #include "main.h"
 /**
- * palind3 - obtains length of a
- * @s: string
- * @i: iterator
+ * palind2 - obtains length of a
+ * @a: string
+ * @l: integer to count length
+ *
  * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-int palind3(char *s, int i)
+int palind2(char *a, int l)
 {
-	if (*s != *(s + i))
-		return (0);
-	else if (*s == 0)
-		return (1);
-	return (palind3(s + 1, i - 2));
+	if (*a == 0)
+		return (l - 1);
+	return (palind2(a + 1, l + 1));
 }
 /**
- * palind2 - checks if a string is a palindrome
- * @s: string to check
- * @i: iterator
- * Return: 1 if palindrome, 0 if not
+ * palind3 - compares string vs string reverse
+ * @a: string
+ * @l: length
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-int palind2(char *s, int i)
+
+int palind3(char *a, int l)
 {
-	if (*s == 0)
-		return (1 - i);
-	return (palind2(s, i + 1));
+	if (*a != *(a + l))
+		return (0);
+	else if (*a == 0)
+		return (1);
+	return (palind3(a + 1, l - 2));
 }
 /**
  * is_palindrome - checks if a string is a palindrome
- * @s: string to check
- * Return: 1 if palindrome, 0 if not
+ * @s: string to evaluate
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
 int is_palindrome(char *s)
 {
-	return (palind2(s, 1));
+	int l;
+
+	l = palind2(s, 0);
+	return (palind3(s, l));
 }

@@ -4,9 +4,15 @@
  * @n: number to be used
  * Return: the square root of n
  */
+int _sqrt(int a, int b)
+{
+	if (b * b == a)
+		return (b);
+	else if (b * b > a)
+		return (-1);
+	return (_sqrt(a, b + 1));
+}
 int _sqrt_recursion(int n)
 {
-	if (n == 1 || n == 0)
-		return (n);
-	return (_sqrt(0, n));
+	return (_sqrt(n, 1));
 }

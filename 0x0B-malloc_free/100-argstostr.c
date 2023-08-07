@@ -42,4 +42,8 @@ char *argstostr(int ac, char **av)
 		free(aout);
 		return (NULL);
 	}
+	else
+	{
+		return (NULL);
+	}
 }

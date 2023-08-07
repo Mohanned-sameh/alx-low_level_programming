@@ -9,41 +9,40 @@
  */
 char *argstostr(int ac, char **av)
 {
-	char *aout;
-	int c, i, j, ia;
-	if (ac == 0)
-		return (NULL);
-	for (c = i = 0; i < ac; i++)
+	int size, count, count1, count2 = 0;
+	char *ptr;
+
+	if (ac == 0 || av == NULL)
 	{
-		if (av[i] == NULL)
-			return (NULL);
-		for (j = 0; av[i][j] != '\0'; j++)
-			c++;
+		return (NULL);
 	}
-	aout = malloc((c + 1) * sizeof(char));
-	if (aout == NULL)
+
+	for (count = 0; count < ac; count++)
 	{
-		free(aout);
-		return (NULL);
-		for (i = j = ia = 0; ia < c; j++, ia++)
+		for (count1 = 0; av[count][count1] != '\0'; count1++)
 		{
-			if (av[i][j] == '\0')
-			{
-				aout[ia] = '\n';
-				i++;
-				ia++;
-				j = 0;
-			}
-			if (ia < c - 1)
-				aout[ia] = av[i][j];
+			size += 1;
 		}
-		aout[ia] = '\0';
-		return (aout);
-		free(aout);
-		return (NULL);
+		size += 1;
 	}
-	else
+	size += 1;
+
+	ptr = malloc(sizeof(char) * size);
+	if (ptr == NULL)
 	{
+		free(ptr);
 		return (NULL);
 	}
+	for (count = 0; count < ac; count++)
+	{
+		for (count1 = 0; av[count][count1] != '\0'; count1++)
+		{
+			ptr[count2] = av[count][count1];
+			count2++;
+		}
+		ptr[count2] = '\n';
+		count2++;
+	}
+	ptr[count2] = '\0';
+	return (ptr);
 }

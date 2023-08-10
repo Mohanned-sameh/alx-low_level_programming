@@ -1,14 +1,12 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
+
 /**
- * array_range - The array created should contain all the values
- *  from min (included) to max (included),
- *  ordered from min to max
+ * array_range - creates an array of integers
  * @min: minimum value
  * @max: maximum value
  * Return: pointer to the newly created array
  */
+
 int *array_range(int min, int max)
 {
 	int *arr;

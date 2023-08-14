@@ -1,6 +1,4 @@
-#ifndef MAIN_H
-#define MAIN_H
-
+#ifndef _HEADER_
+#define _HEADER_
 #define SIZE 1024
-
-#endif // MAIN_H
+#endif

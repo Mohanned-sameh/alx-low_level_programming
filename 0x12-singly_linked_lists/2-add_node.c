@@ -7,28 +7,28 @@
  */
 list_t *add_node(list_t **head, const char *str)
 {
-    list_t *new;
-    int i;
-    char *s;
+	list_t *new;
+	int i;
+	char *s;
 
-    new = malloc(sizeof(list_t));
+	new = malloc(sizeof(list_t));
 
-    if (new == NULL)
-        return (NULL);
+	if (new == NULL)
+		return (NULL);
 
-    s = strdup(str);
-    if (s == NULL)
-    {
-        free(new);
-        return (NULL);
-    }
-    for (i = 0; str[i]; i++)
-    {
-        ;
-    }
-    new->str = s;
-    new->len = i;
-    new->next = *head;
-    *head = new;
-    return (new);
+	s = strdup(str);
+	if (s == NULL)
+	{
+		free(new);
+		return (NULL);
+	}
+	for (i = 0; str[i]; i++)
+	{
+		;
+	}
+	new->str = s;
+	new->len = i;
+	new->next = *head;
+	*head = new;
+	return (new);
 }

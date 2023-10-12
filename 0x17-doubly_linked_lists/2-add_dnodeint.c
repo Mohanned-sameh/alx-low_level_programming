@@ -5,7 +5,7 @@
  * @n: value to be added
  * Return: address of new element or NULL if failed
  */
-dlistint_t add_dnodeint(dlistint_t **head, const int n)
+dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
 	dlistint_t *new = malloc(sizeof(dlistint_t));
 

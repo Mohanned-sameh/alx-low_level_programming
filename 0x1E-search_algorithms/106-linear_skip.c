@@ -8,33 +8,48 @@
  */
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	skiplist_t *prev, *next;
+	skiplist_t *current, *prev;
 
-	if (!list)
+	if (list == NULL)
 		return (NULL);
-	for (prev = list; prev; prev = next)
+
+	current = list;
+	while (current)
 	{
-		next = prev->express;
-		printf("Value checked at index [%lu] = [%d]\n", next->index, next->n);
-		if (!next || next->n >= value)
+		prev = current;
+		if (current->express == NULL)
 		{
-			if (!next)
-			{
-				next = prev;
-				while (next->next)
-					next = next->next;
-			}
-			printf("Value found between indexes [%lu] and [%lu]\n",
-				   prev->index, next->index);
-			while (prev->index <= next->index)
-			{
-				printf("Value checked at index [%lu] = [%d]\n", prev->index, prev->n);
-				if (prev->n == value)
-					return (prev);
-				prev = prev->next;
-			}
+			while (current->next)
+				current = current->next;
 			break;
 		}
+		current = current->express;
+		printf("Value checked at index [%lu] = [%d]\n",
+			   current->index, current->n);
+		if (current->n >= value)
+		{
+			printf("Value found between indexes [%lu] and [%lu]\n",
+				   prev->index, current->index);
+			break;
+		}
+	}
+	if (current->express == NULL)
+	{
+		prev = current;
+		while (current->next)
+			current = current->next;
+	}
+	printf("Value found between indexes [%lu] and [%lu]\n",
+		   prev->index, current->index);
+	while (prev)
+	{
+		printf("Value checked at index [%lu] = [%d]\n",
+			   prev->index, prev->n);
+		if (prev->n == value)
+			return (prev);
+		if (prev->n > value)
+			return (NULL);
+		prev = prev->next;
 	}
 	return (NULL);
 }

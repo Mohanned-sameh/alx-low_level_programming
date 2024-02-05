@@ -10,37 +10,41 @@
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	size_t jump, i;
-	listint_t *prev, *next;
+	size_t index, k, m;
+	listint_t *prev;
 
-	if (!list)
+	if (list == NULL || size == 0)
 		return (NULL);
-	jump = sqrt(size);
-	for (i = 0, next = list; next->n < value; i += jump)
+
+	m = (size_t)sqrt((double)size);
+	index = 0;
+	k = 0;
+
+	do
 	{
-		prev = next;
-		while (i < size && i < (i + jump))
-		{
-			next = next->next;
-			i++;
-		}
-		if (i < size)
-			printf("Value checked at index [%lu] = [%d]\n", i, next->n);
-	}
-	printf("Value found between indexes [%lu] and [%lu]\n", i - jump, i);
-	for (; prev->index < i - jump; prev = prev->next)
-		;
-	printf("Value found between indexes [%lu] and [%lu]\n",
-		   prev->index, next->index);
-	while (prev->index < size && prev->n < value)
+		prev = list;
+		k++;
+		index = k * m;
+
+		while (list->next && list->index < index)
+			list = list->next;
+
+		if (list->next == NULL && index != list->index)
+			index = list->index;
+
+		printf("Value checked at index [%d] = [%d]\n", (int)index, list->n);
+
+	} while (index < size && list->next && list->n < value);
+
+	printf("Value found between indexes ");
+	printf("[%d] and [%d]\n", (int)prev->index, (int)list->index);
+
+	for (; prev && prev->index <= list->index; prev = prev->next)
 	{
-		printf("Value checked at index [%lu] = [%d]\n", prev->index, prev->n);
-		prev = prev->next;
+		printf("Value checked at index [%d] = [%d]\n", (int)prev->index, prev->n);
+		if (prev->n == value)
+			return (prev);
 	}
-	if (prev->n == value)
-	{
-		printf("Value checked at index [%lu] = [%d]\n", prev->index, prev->n);
-		return (prev);
-	}
+
 	return (NULL);
 }

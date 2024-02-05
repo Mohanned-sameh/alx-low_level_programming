@@ -1,9 +1,11 @@
-#ifndef _SORTING_ALGOS_H_
-#define _SORTING_ALGOS_H_
+#ifndef SEARCH_ALGOS_H
+#define SEARCH_ALGOS_H
 
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <math.h>
+#include <stddef.h>
+#include <unistd.h>
 /**
  * struct listint_s - singly linked list
  *
